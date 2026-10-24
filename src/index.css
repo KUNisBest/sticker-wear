@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 43 65% 52%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 43 65% 52%;
+    --radius: 0px;
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 43 65% 52%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 43 65% 52%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'League Spartan', sans-serif;
+  }
+
+  .font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-gold {
+    color: #d4af37;
+  }
+
+  .text-gold-glow {
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .text-red-glow {
+    color: #ff3333;
+    text-shadow: 0 0 20px rgba(255, 51, 51, 0.8), 0 0 40px rgba(255, 51, 51, 0.4);
+  }
+
+  .glitch-transition {
+    animation: glitchTear 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes glitchTear {
+    0% {
+      transform: translate(0, 0) skew(0deg);
+      filter: none;
+    }
+    10% {
+      transform: translate(-20px, 5px) skew(15deg);
+      clip-path: inset(10% 0 80% 0);
+      filter: brightness(2) invert(0.8);
+    }
+    20% {
+      transform: translate(20px, -10px) skew(-20deg);
+      clip-path: inset(40% 0 30% 0);
+      filter: brightness(3) invert(1);
+    }
+    30% {
+      transform: translate(-15px, 8px) skew(10deg);
+      clip-path: inset(60% 0 10% 0);
+    }
+    40% {
+      transform: translate(10px, -5px) skew(-15deg);
+      filter: brightness(1.5);
+    }
+    50% {
+      transform: translate(-30px, 0) skew(25deg);
+      clip-path: inset(20% 0 50% 0);
+    }
+    60% {
+      transform: translate(25px, 10px) skew(-10deg);
+      filter: brightness(2) invert(0.5);
+    }
+    70% {
+      transform: translate(-10px, -8px) skew(20deg);
+      clip-path: inset(70% 0 5% 0);
+    }
+    80% {
+      transform: translate(15px, 5px) skew(-5deg);
+    }
+    90% {
+      transform: translate(-5px, -3px) skew(8deg);
+      filter: brightness(1.2);
+    }
+    100% {
+      transform: translateX(-120vw);
+      opacity: 0;
+      filter: none;
+    }
+  }
+
+  @keyframes errorBlink {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .error-blink {
+    animation: errorBlink 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+}
