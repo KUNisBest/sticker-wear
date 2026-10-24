@@ -40,9 +40,13 @@ export default function Login({ onClose }: LoginProps) {
 
   // Save phone to localStorage
   const savePhone = useCallback((value: string) => {
-    setPhone(value);
+    // 剥离 +86 前缀(浏览器自动填充/粘贴时常带),避免存成 "86..." 的畸形号码
+    const digits = value.replace(/\D/g, '');
+    const cleaned = digits.startsWith('86') && digits.length > 11 ? digits.slice(2) : digits;
+    const next = cleaned.slice(0, 11);
+    setPhone(next);
     if (rememberPhone) {
-      localStorage.setItem(PHONE_STORAGE_KEY, value);
+      localStorage.setItem(PHONE_STORAGE_KEY, next);
     }
   }, [rememberPhone]);
 
@@ -61,6 +65,7 @@ export default function Login({ onClose }: LoginProps) {
   const passwordLoginMutation = trpc.auth.loginPassword.useMutation({
     onSuccess: (data) => {
       if (data.success && data.token) {
+        setToken(data.token);
         setSuccess('登录成功！');
         setTimeout(() => {
           onClose();
@@ -158,7 +163,7 @@ export default function Login({ onClose }: LoginProps) {
   const handleSendCode = useCallback(() => {
     setError('');
     setSuccess('');
-    if (!phone.match(/^1[3-9]\d{9}$/)) {
+    if (!phone.match(/^1\d{10}$/)) {
       setError('请输入正确的11位手机号');
       return;
     }
@@ -170,7 +175,7 @@ export default function Login({ onClose }: LoginProps) {
       e.preventDefault();
       setError('');
       setSuccess('');
-      if (!phone.match(/^1[3-9]\d{9}$/)) {
+      if (!phone.match(/^1\d{10}$/)) {
         setError('请输入正确的11位手机号');
         return;
       }
@@ -188,7 +193,7 @@ export default function Login({ onClose }: LoginProps) {
       e.preventDefault();
       setError('');
       setSuccess('');
-      if (!phone.match(/^1[3-9]\d{9}$/)) {
+      if (!phone.match(/^1\d{10}$/)) {
         setError('请输入正确的11位手机号');
         return;
       }

@@ -47,7 +47,7 @@ export default function Shop() {
   const handleBuy = () => {
     if (!buyProduct) return;
     if (!shippingName.trim()) { setMsg('❌ 请填写收货人'); return; }
-    if (!shippingPhone.match(/^1[3-9]\d{9}$/)) { setMsg('❌ 手机号格式错误'); return; }
+    if (!shippingPhone.match(/^1\d{10}$/)) { setMsg('❌ 手机号格式错误'); return; }
     if (!shippingAddress.trim()) { setMsg('❌ 请填写收货地址'); return; }
 
     createOrder.mutate({
@@ -185,7 +185,11 @@ export default function Shop() {
                 </div>
                 <div className="flex-1">
                   <label className="block font-mono-data text-[10px] tracking-wider mb-1" style={{ color: '#999' }}>手机号</label>
-                  <input type="tel" value={shippingPhone} onChange={(e) => setShippingPhone(e.target.value.replace(/\D/g, '').slice(0, 11))}
+                  <input type="tel" value={shippingPhone} onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, '');
+                    const cleaned = digits.startsWith('86') && digits.length > 11 ? digits.slice(2) : digits;
+                    setShippingPhone(cleaned.slice(0, 11));
+                  }}
                     className="w-full px-3 py-2 text-sm text-black border border-gray-200 focus:outline-none focus:border-black" placeholder="11位手机号" maxLength={11} />
                 </div>
               </div>

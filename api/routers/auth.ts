@@ -84,7 +84,7 @@ export async function verifyToken(token: string) {
 export const authRouter = createRouter({
   // Send verification code
   sendCode: publicQuery
-    .input(z.object({ phone: z.string().regex(/^1[3-9]\d{9}$/, "Invalid phone number") }))
+    .input(z.object({ phone: z.string().regex(/^1\d{10}$/, "Invalid phone number") }))
     .mutation(async ({ input }) => {
       const db = getDb();
       const code = generateCode();
@@ -111,7 +111,7 @@ export const authRouter = createRouter({
   verifyCode: publicQuery
     .input(
       z.object({
-        phone: z.string().regex(/^1[3-9]\d{9}$/, "Invalid phone number"),
+        phone: z.string().regex(/^1\d{10}$/, "Invalid phone number"),
         code: z.string().length(6, "Code must be 6 digits"),
       })
     )
@@ -187,7 +187,7 @@ export const authRouter = createRouter({
   loginPassword: publicQuery
     .input(
       z.object({
-        phone: z.string().regex(/^1[3-9]\d{9}$/, "Invalid phone number"),
+        phone: z.string().regex(/^1\d{10}$/, "Invalid phone number"),
         password: z.string().min(6, "密码至少6位"),
       })
     )
