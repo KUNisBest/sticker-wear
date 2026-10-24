@@ -59,8 +59,8 @@
 
 ```
 ├── src/                  # 前端
-│   ├── pages/            #   Intro(入口) / Home / Shop / Login / Profile / Admin
-│   ├── components/       #   Navbar、ParticleRain、shadcn/ui 组件
+│   ├── pages/            #   Home / Shop / Login / Profile / Admin
+│   ├── components/       #   Navbar、shadcn/ui 组件
 │   ├── hooks/            #   useAuth(JWT 状态管理)
 │   └── providers/        #   tRPC client
 ├── api/                  # 后端(Hono + tRPC)
