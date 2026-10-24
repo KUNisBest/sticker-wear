@@ -117,13 +117,6 @@ UPDATE products SET stock = stock - 1 WHERE id = ? AND stock >= 1
 - 通过 affectedRows 判断成败:0 行受影响 = 库存不足,直接返回失败
 - 多商品下单时任一商品扣减失败,对已扣商品做补偿回滚
 
-## 📝 面试亮点速览
-
-- **竞态条件修复**:TOCTOU(Time-of-check to Time-of-use)漏洞的识别与根治
-- **密码学实践**:scrypt 加盐哈希、JWT 密钥环境变量化管理
-- **安全设计**:验证码过期 / 一次性、服务端计价(不信任前端)、角色鉴权
-- **状态机**:订单 pending → paid → shipped → completed / cancelled
-
 ## 📄 License
 
 [MIT](LICENSE)
