@@ -181,23 +181,23 @@ export default function Shop() {
                 <div className="flex-1">
                   <label className="block font-mono-data text-[10px] tracking-wider mb-1" style={{ color: '#999' }}>收货人</label>
                   <input type="text" value={shippingName} onChange={(e) => setShippingName(e.target.value)}
-                    className="w-full px-3 py-2 text-sm border border-gray-200 focus:outline-none focus:border-black" placeholder="姓名" />
+                    className="w-full px-3 py-2 text-sm text-black border border-gray-200 focus:outline-none focus:border-black" placeholder="姓名" />
                 </div>
                 <div className="flex-1">
                   <label className="block font-mono-data text-[10px] tracking-wider mb-1" style={{ color: '#999' }}>手机号</label>
                   <input type="tel" value={shippingPhone} onChange={(e) => setShippingPhone(e.target.value.replace(/\D/g, '').slice(0, 11))}
-                    className="w-full px-3 py-2 text-sm border border-gray-200 focus:outline-none focus:border-black" placeholder="11位手机号" maxLength={11} />
+                    className="w-full px-3 py-2 text-sm text-black border border-gray-200 focus:outline-none focus:border-black" placeholder="11位手机号" maxLength={11} />
                 </div>
               </div>
               <div>
                 <label className="block font-mono-data text-[10px] tracking-wider mb-1" style={{ color: '#999' }}>收货地址</label>
                 <input type="text" value={shippingAddress} onChange={(e) => setShippingAddress(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-gray-200 focus:outline-none focus:border-black" placeholder="省/市/区/详细地址" />
+                  className="w-full px-3 py-2 text-sm text-black border border-gray-200 focus:outline-none focus:border-black" placeholder="省/市/区/详细地址" />
               </div>
               <div>
                 <label className="block font-mono-data text-[10px] tracking-wider mb-1" style={{ color: '#999' }}>备注（可选）</label>
                 <textarea value={note} onChange={(e) => setNote(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-gray-200 focus:outline-none focus:border-black resize-none" rows={2} placeholder="如尺码、颜色等" />
+                  className="w-full px-3 py-2 text-sm text-black border border-gray-200 focus:outline-none focus:border-black resize-none" rows={2} placeholder="如尺码、颜色等" />
               </div>
             </div>
 
